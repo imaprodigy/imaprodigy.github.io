@@ -126,59 +126,85 @@
       from { transform: scale(.96); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
-
-    /* Safe fade-out for the question */
-    #question.fade {
-      opacity: 0;
-      transition: opacity 0.4s ease;
-    }
   </style>
 </head>
 
 <body>
   <canvas id="confettiCanvas"></canvas>
 
-  <main class="card">
-    <!--PENGUIN-->
-    <svg class="art" width="150" height="180" viewBox="0 0 300 360" xmlns="http://www.w3.org/2000/svg">
-      <!-- Body -->
-      <ellipse cx="150" cy="180" rx="100" ry="130" fill="#0b0b0b"/>
-      <!-- Belly -->
-      <ellipse cx="150" cy="200" rx="70" ry="90" fill="#ffffff"/>
-      <!-- Eyes -->
-      <circle cx="120" cy="120" r="18" fill="#000"/>
-      <circle cx="180" cy="120" r="18" fill="#000"/>
-      <!-- Eye shine -->
-      <circle cx="114" cy="114" r="6" fill="#fff"/>
-      <circle cx="174" cy="114" r="6" fill="#fff"/>
-      <!-- Blush -->
-      <ellipse cx="100" cy="145" rx="12" ry="8" fill="#ff9bb5"/>
-      <ellipse cx="200" cy="145" rx="12" ry="8" fill="#ff9bb5"/>
-      <!-- Beak -->
-      <path d="M150 145 C140 150 140 165 150 170 C160 165 160 150 150 145" fill="#ff9f1c"/>
-      <!-- Arms -->
-      <ellipse cx="95" cy="210" rx="25" ry="45" fill="#0b0b0b"/>
-      <ellipse cx="205" cy="210" rx="25" ry="45" fill="#0b0b0b"/>
-      <!-- Heart -->
-      <path d=" M150 210 C150 185 115 185 115 215 C115 245 150 265 150 285 C150 265 185 245 185 215 C185 185 150 185 150 210 " fill="#ffb6c9"/>
-      <!-- Feet -->
-      <ellipse cx="120" cy="315" rx="20" ry="12" fill="#ff3b6f"/>
-      <ellipse cx="180" cy="315" rx="20" ry="12" fill="#ff3b6f"/>
-    </svg>
+<main class="card">
+  <!--PENGUIN-->
+<svg class="art" width="150" height="180" viewBox="0 0 300 360" xmlns="http://www.w3.org/2000/svg">
+  <!-- Body -->
+  <ellipse cx="150" cy="180" rx="100" ry="130" fill="#0b0b0b"/>
 
-    <h1 id="question">benji, will you be my valentine?</h1>
+  <!-- Belly -->
+  <ellipse cx="150" cy="200" rx="70" ry="90" fill="#ffffff"/>
+
+  <!-- Eyes (bigger & cuter) -->
+  <circle cx="120" cy="120" r="18" fill="#000"/>
+  <circle cx="180" cy="120" r="18" fill="#000"/>
+
+  <!-- Eye shine -->
+  <circle cx="114" cy="114" r="6" fill="#fff"/>
+  <circle cx="174" cy="114" r="6" fill="#fff"/>
+
+  <!-- Blush -->
+  <ellipse cx="100" cy="145" rx="12" ry="8" fill="#ff9bb5"/>
+  <ellipse cx="200" cy="145" rx="12" ry="8" fill="#ff9bb5"/>
+
+  <!-- Beak -->
+  <path
+    d="M150 145
+       C140 150 140 165 150 170
+       C160 165 160 150 150 145"
+    fill="#ff9f1c"
+  />
+
+  <!-- Arms -->
+  <ellipse cx="95" cy="210" rx="25" ry="45" fill="#0b0b0b"/>
+  <ellipse cx="205" cy="210" rx="25" ry="45" fill="#0b0b0b"/>
+
+  <!-- Heart -->
+  <path
+    d="
+      M150 210
+      C150 185 115 185 115 215
+      C115 245 150 265 150 285
+      C150 265 185 245 185 215
+      C185 185 150 185 150 210
+    "
+    fill="#ffb6c9"
+  />
+
+  <!-- Feet -->
+  <ellipse cx="120" cy="315" rx="20" ry="12" fill="#ff3b6f"/>
+  <ellipse cx="180" cy="315" rx="20" ry="12" fill="#ff3b6f"/>
+
+</svg>
+   
+    <h1>benji,
+
+will you be my valentine?</h1>
+  
 
     <section class="button-zone" id="zone">
       <button id="yesBtn">Yes</button>
       <button id="noBtn">No</button>
     </section>
 
+    <!-- HINT -->
     <div class="hint" id="hint">It might be "yes or yes" 😈</div>
 
     <section class="result" id="result">
-      <h2>i love this beautiful little life we're building together.</h2>
-      <h2> i love you even more, my forever valentine -♡´-</h2>
-      <img class="fireworks" src="https://github.com/user-attachments/assets/d36e2e77-c91d-4f5a-b71c-ddbfc729ac10" alt="Fireworks" />
+    <h2>i love this beautiful little life we're building together.</h2>
+      <h2> i love you even more, my forever valentine -`♡´-</h2>
+
+      <img
+        class="fireworks"
+      src="https://github.com/user-attachments/assets/d36e2e77-c91d-4f5a-b71c-ddbfc729ac10"
+        alt="Fireworks"
+      />
     </section>
   </main>
 
@@ -188,10 +214,10 @@
     const noBtn = document.getElementById("noBtn");
     const result = document.getElementById("result");
     const hint = document.getElementById("hint");
-    const question = document.getElementById("question");
 
     /* ---------- CONFETTI ---------- */
     const confettiCanvas = document.getElementById("confettiCanvas");
+
     function resizeConfettiCanvas() {
       const dpr = Math.max(1, window.devicePixelRatio || 1);
       confettiCanvas.width = Math.floor(window.innerWidth * dpr);
@@ -199,6 +225,7 @@
       confettiCanvas.style.width = "100vw";
       confettiCanvas.style.height = "100vh";
     }
+
     resizeConfettiCanvas();
     window.addEventListener("resize", resizeConfettiCanvas);
     window.addEventListener("orientationchange", () => setTimeout(resizeConfettiCanvas, 150));
@@ -210,6 +237,7 @@
 
     function fullScreenConfetti() {
       const end = Date.now() + 1600;
+
       (function frame() {
         confettiInstance({
           particleCount: 12,
@@ -220,6 +248,7 @@
         });
         if (Date.now() < end) requestAnimationFrame(frame);
       })();
+
       setTimeout(() => {
         confettiInstance({
           particleCount: 300,
@@ -270,28 +299,3 @@
       const b = noBtn.getBoundingClientRect();
       const d = Math.hypot(
         (b.left + b.width / 2) - e.clientX,
-        (b.top + b.height / 2) - e.clientY
-      );
-      if (d < 140) moveNo(e.clientX, e.clientY);
-    });
-
-    noBtn.addEventListener("click", e => e.preventDefault());
-
-    /* ---------- YES CLICK ---------- */
-    yesBtn.addEventListener("click", () => {
-      zone.style.display = "none";
-      hint.style.display = "none";
-
-      // fade out question
-      question.classList.add("fade");
-
-      setTimeout(() => {
-        question.style.display = "none";
-        result.style.display = "block";
-        resizeConfettiCanvas();
-        fullScreenConfetti();
-      }, 400);
-    });
-  </script>
-</body>
-</html>
