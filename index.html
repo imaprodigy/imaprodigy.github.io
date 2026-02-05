@@ -126,6 +126,21 @@
       from { transform: scale(.96); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
+    /* Fade + slide the question away */
+.fade-out.hide {
+  animation: fadeSlideUp 0.5s ease forwards;
+}
+
+@keyframes fadeSlideUp {
+  from {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateY(-12px);
+  }
+}
   </style>
 </head>
 
@@ -183,10 +198,11 @@
 
 </svg>
    
-    <h1>benji,
+    <h1 id="question" class="fade-out">
+  benji,<br>
+  will you be my valentine?
+</h1>
 
-will you be my valentine?</h1>
-  
 
     <section class="button-zone" id="zone">
       <button id="yesBtn">Yes</button>
@@ -209,6 +225,7 @@ will you be my valentine?</h1>
   </main>
 
   <script>
+    const question = document.getElementById("question");
     const zone = document.getElementById("zone");
     const yesBtn = document.getElementById("yesBtn");
     const noBtn = document.getElementById("noBtn");
@@ -308,9 +325,17 @@ will you be my valentine?</h1>
 
     /* ---------- YES CLICK ---------- */
     yesBtn.addEventListener("click", () => {
-      zone.style.display = "none";
-      hint.style.display = "none";     // HIDE THE HINT
-      result.style.display = "block";
+  zone.style.display = "none";
+  hint.style.display = "none";
+
+  question.classList.add("hide"); // 💕 animate out
+
+  setTimeout(() => {
+    result.style.display = "block";
+    resizeConfettiCanvas();
+    fullScreenConfetti();
+  }, 450); // wait for animation to finish
+});
       resizeConfettiCanvas();
       fullScreenConfetti();
     });
