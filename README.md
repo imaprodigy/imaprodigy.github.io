@@ -1,3 +1,3 @@
 # imaprodigy.github.io
 
-![Demo](demo/ezgif-8e05063bfe96abbb.gif)
+![Image](https://github.com/user-attachments/assets/d36e2e77-c91d-4f5a-b71c-ddbfc729ac10)
