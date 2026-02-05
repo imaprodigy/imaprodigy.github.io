@@ -215,7 +215,9 @@ const b = noBtn.getBoundingClientRect();
 const d = Math.hypot((b.left + b.width / 2) - e.clientX,(b.top + b.height / 2) - e.clientY);
 if (d < 140) moveNo(e.clientX, e.clientY);
 });
-noBtn.addEventListener("click", e => e.preventDefault());
+
+  noBtn.addEventListener("click", e => e.preventDefault());
+  
 /* ---------- YES CLICK ---------- */
 yesBtn.addEventListener("click", () => {
 zone.style.display = "none";
