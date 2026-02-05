@@ -126,22 +126,18 @@
       from { transform: scale(.96); opacity: 0; }
       to { transform: scale(1); opacity: 1; }
     }
-    /* Fade + slide the question away */
-.fade-out.hide {
-  animation: fadeSlideUp 0.5s ease forwards;
+    /* Safe fade-out for the question */
+#question.hide {
+  animation: questionFade 0.4s ease forwards;
 }
 
-@keyframes fadeSlideUp {
-  from {
-    opacity: 1;
-    transform: translateY(0);
-  }
-  to {
-    opacity: 0;
-    transform: translateY(-12px);
-  }
+@keyframes questionFade {
+  from { opacity: 1; }
+  to   { opacity: 0; }
 }
+
   </style>
+  
 </head>
 
 <body>
@@ -198,10 +194,10 @@
 
 </svg>
    
-    <h1 id="question" class="fade-out">
+    <h1 id="question">
   benji,<br>
   will you be my valentine?
-</h1>
+      </h1>
 
 
     <section class="button-zone" id="zone">
@@ -328,16 +324,14 @@
   zone.style.display = "none";
   hint.style.display = "none";
 
-  question.classList.add("hide"); // 💕 animate out
+  question.classList.add("hide");
 
   setTimeout(() => {
     result.style.display = "block";
     resizeConfettiCanvas();
     fullScreenConfetti();
-  }, 450); // wait for animation to finish
-});
-      resizeConfettiCanvas();
-      fullScreenConfetti();
+  }, 400);
+      
     });
   </script>
 </body>
