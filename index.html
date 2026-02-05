@@ -209,22 +209,22 @@ will you be my valentine?</h1>
   </main>
 
   <script>
-    const zone = document.getElementById("zone");
-    const yesBtn = document.getElementById("yesBtn");
-    const noBtn = document.getElementById("noBtn");
-    const result = document.getElementById("result");
-    const hint = document.getElementById("hint");
+const zone = document.getElementById("zone");
+const yesBtn = document.getElementById("yesBtn");
+const noBtn = document.getElementById("noBtn");
+const result = document.getElementById("result");
+const hint = document.getElementById("hint");
 
     /* ---------- CONFETTI ---------- */
-    const confettiCanvas = document.getElementById("confettiCanvas");
+const confettiCanvas = document.getElementById("confettiCanvas");
 
-    function resizeConfettiCanvas() {
-      const dpr = Math.max(1, window.devicePixelRatio || 1);
-      confettiCanvas.width = Math.floor(window.innerWidth * dpr);
-      confettiCanvas.height = Math.floor(window.innerHeight * dpr);
-      confettiCanvas.style.width = "100vw";
-      confettiCanvas.style.height = "100vh";
-    }
+function resizeConfettiCanvas() {
+const dpr = Math.max(1, window.devicePixelRatio || 1);
+confettiCanvas.width = Math.floor(window.innerWidth * dpr);
+confettiCanvas.height = Math.floor(window.innerHeight * dpr);
+confettiCanvas.style.width = "100vw";
+confettiCanvas.style.height = "100vh";
+}
 
     resizeConfettiCanvas();
     window.addEventListener("resize", resizeConfettiCanvas);
